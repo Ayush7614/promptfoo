@@ -1,25 +1,28 @@
 import asyncio
 from typing import Any, Dict
+
 from agent import run_recruitment_agent
 
-def call_api(prompt: str, options: Dict[str, Any], context: Dict[str, Any]) -> Dict[str, Any]:
+
+def call_api(
+    prompt: str, options: Dict[str, Any], context: Dict[str, Any]
+) -> Dict[str, Any]:
     """
     Calls the CrewAI recruitment agent with the provided prompt.
     Wraps the async function in a synchronous call for Promptfoo.
     """
     try:
+        # ✅ Get model from options, default to gpt-4o
+        model = options.get("model", "openai:gpt-4o")
+
         # ✅ Run the async recruitment agent synchronously
-        result = asyncio.run(run_recruitment_agent(prompt))
+        result = asyncio.run(run_recruitment_agent(prompt, model))
         return {"output": result}
 
     except Exception as e:
         # 🔥 Catch and return any error as part of the output
-        return {
-            "output": {
-                "candidates": [],
-                "summary": f"Error occurred: {str(e)}"
-            }
-        }
+        return {"output": {"candidates": [], "summary": f"Error occurred: {str(e)}"}}
+
 
 if __name__ == "__main__":
     # 🧪 Simple test block to check provider behavior standalone
