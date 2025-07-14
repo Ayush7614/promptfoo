@@ -451,6 +451,7 @@ You typed `y`, and boom — the browser opened with the Promptfoo dashboard.
   - Pass/fail status based on your assertions.
 - **Outputs** →
   - A pretty JSON display showing candidates like:
+
   ```json
   [{
     "name": "Sarah Chen",
@@ -461,6 +462,7 @@ You typed `y`, and boom — the browser opened with the Promptfoo dashboard.
   ```
 
   - Summary text.
+
 - **Stats** → - Pass rate (here, 100% passing!) - Latency (how long it took per call) - Number of assertions checked.
   <img width="800" height="499" alt="Promptfoo web dashboard showing CrewAI agent evaluation results with candidate JSON output" src="/img/docs/crewai/promptfoo-dashboard.png" />
 
